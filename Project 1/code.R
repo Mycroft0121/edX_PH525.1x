@@ -1,0 +1,17 @@
+dat <- read.csv("femaleMiceWeights.csv")
+tab = read.csv("msleep_ggplot2.csv")
+class(tab)
+head(tab)
+dim(tab)
+colnames(tab)
+tab$sleep_total
+plot(tab$brainwt, tab$sleep_total, log ="x")
+summary(tab)
+summary(tab$sleep_total)
+mean(tab[tab$sleep_total>18,][,c(6)])
+which(tab$sleep_total > 18 & tab$sleep_rem < 3)
+sort(tab$sleep_total)
+order(tab$sleep_total)
+tab$sleep_total[ order(tab$sleep_total)]
+rank(tab$sleep_total)
+match(c("Cotton rat"), tab$name)
