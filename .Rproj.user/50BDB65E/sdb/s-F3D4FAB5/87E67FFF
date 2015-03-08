@@ -1,0 +1,17 @@
+{
+    "contents" : "dat <-read.csv(\"Project 1/femaleMiceWeights.csv\")\ndat[1:12,2]\nmean(dat[13:24,2])-mean(dat[1:12,2])\ns = split(dat[,2],dat[,1])\nstripchart(s,vertical=TRUE,col=1:2)\nabline(h=sapply(s,mean),col=1:2)\nhighfat = s[[\"hf\"]]\nsample(highfat,6)\nsum(highfat>30)/12\npopulation <-read.csv(\"Project 1/femaleControlsPopulation.csv\")\ncontrol <- sample(population[,1],12)\nmean(control)\nn <- 10000\nnull <- vector(\"numeric\",n)\nfor(i in 1:n){\n  control <- sample(population[,1],12)\n  treatment <- sample(population[,1],12)\n  null[i] <- mean(treatment)-mean(control)\n}\ndiff <- mean(dat[13:24,2])-mean(dat[1:12,2])\nmean(null>diff)\nsampleMean = replicate(10000,mean(sample(population[,1],12)))\nhead(sampleMean)\nplot(sampleMean)\nnull = replicate(10000,mean(sample(population[,1],12)))-replicate(10000,mean(sample(population[,1],12)))\nhead(null)                                               \nplot(null)\nhist(null)\nabline(v=diff,col=\"red\")\nabline(v=-diff,col=\"red\")\nmean((null>diff)|(-diff>null))\nlibrary(gapminder)\ndata(gapminder)\nhead(gapminder)\nx = data.frame(gapminder$country,gapminder$lifeExp )\nplot(x)\nyear_vector =  gapminder$year ==1952\nnewdf=x[year_vector,]\nmean(newdf$gapminder.lifeExp<=40)\nmean(newdf$gapminder.lifeExp<=60)-mean(newdf$gapminder.lifeExp<=40)\ny = gapminder$pop \ny_new = log10(y[year_vector])\nave = mean(y_new)\nstdv = sd(y_new)\nqqnorm(y_new)\nstandarize = function(a,b,c){(a-b)/c}\nz = standarize(y_new, ave, stdv)\nqqnorm(z)\ntail(sort(z),1)\nF = function(q) pnorm(q, mean=mean(y_new), sd=sd(y_new))\n(F(7)-F(6))*length(y_new)\nn = length(y_new)\nqs = (1:n-0.5)/n\nqnorm(qs[1])\n",
+    "created" : 1422302040901.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1794626371",
+    "id" : "87E67FFF",
+    "lastKnownWriteTime" : 1422414009,
+    "path" : "/media/mycroft/00041D820005459D/D Disk/Documents/books/MOOC/CS/Harvard Bioinformatics/week2.R",
+    "project_path" : "week2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "dat <- read.csv(\"femaleMiceWeights.csv\")\ntab = read.csv(\"msleep_ggplot2.csv\")\nclass(tab)\nhead(tab)\ndim(tab)\ncolnames(tab)\ntab$sleep_total\nplot(tab$brainwt, tab$sleep_total, log =\"x\")\nsummary(tab)\nsummary(tab$sleep_total)\nmean(tab[tab$sleep_total>18,][,c(6)])\nwhich(tab$sleep_total > 18 & tab$sleep_rem < 3)\nsort(tab$sleep_total)\norder(tab$sleep_total)\ntab$sleep_total[ order(tab$sleep_total)]\nrank(tab$sleep_total)\nmatch(c(\"Cotton rat\"), tab$name)\ntable(tab$order)\ns = split(tab$sleep_total, tab$order)\nmean(s[[\"Rodentia\"]])\nlapply(s, mean)\nsapply(s,mean)\ntapply(tab$sleep_total,tab$order,mean)",
+    "created" : 1422302266543.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1410920599",
+    "id" : "A32D30EF",
+    "lastKnownWriteTime" : 1422305082,
+    "path" : "/media/mycroft/00041D820005459D/D Disk/Documents/books/MOOC/CS/Harvard Bioinformatics/Project 1/code.R",
+    "project_path" : "Project 1/code.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
