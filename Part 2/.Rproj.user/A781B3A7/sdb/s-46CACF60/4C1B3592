@@ -1,0 +1,17 @@
+{
+    "contents" : "install.packages(\"UsingR\")\nlibrary(UsingR)\n?father.son\nmean(father.son$sheight)\nsub71 = subset(father.son, 70.5<=father.son$fheight&father.son$fheight<71.5)\nmean(sub71$sheight)\nsub71\nfather.son$fheight\nX= matrix(1:1000,100,10)\nX[25,3]\nx = 1:10\nx2 =  2*x\nx3 =  3*x\nx4 =  4*x\nx5 =  5*x\na= cbind(x,x2,x3,x4,x5)\nsum(a[7,])\nmatrix(1:60,20,3,byrow=TRUE)\nx=11:20;rbind(x,2*x,3*x)\nx=1:40;\nX=matrix(3*x,20,2)\nX = matrix(c(3,2,1,5,4,2,-1,0,-5,2,5,0,1,-1,-5,1),4,4)\nY = matrix(c(10,5,7,4),4,1)\nsolve(X)%*%Y\na <- matrix(1:12, nrow=4)\nb <- matrix(1:15, nrow=3)\na%*%b\nsum(a[3,]*b[,2])\n\n\n\ng = 9.8\nn = 25\ntt = seq(0,3.4,len=n)\nf = 56.67+0*tt-0.5*g*tt^2\ny = f+rnorm(n,sd=1)\nplot(tt,y,xlab=\"Time in secs\",ylab=\"Distance in meters\")\nlines(tt,f, col=2)\nrss= function(Beta0,Beta1, Beta2){\n  r = y-(Beta0+Beta1*tt+Beta2*tt^2)\n  sum(r^2)\n}\nBeta2s = seq(-10,0,len=100)\nRSS = sapply(Beta2s, rss,Beta0=45,Beta1=0)\nplot(Beta2s, RSS,type = \"l\")\ntt2 =tt^2\nfit = lm(y~tt+tt2)\nX =cbind(rep(1,length(tt)),tt,tt^2)\nBeta=matrix(c(55,0,5),3,1)\nr = y-X %*% Beta\nRSS = t(r)%*%r\nRSS = crossprod(r)\nbetahat = solve(t(X)%*%X)%*%t(X)%*%y\nQR = qr(X)\nQ =qr.Q(QR)\nR=qr.R(QR)\nbacksolve(R, crossprod(Q,y))\n\n\ng = 9.8 ## meters per second\nh0 = 56.67\nv0 = 0\nn = 25\ntt = seq(0,3.4,len=n) ##time in secs, t is a base function\n#y = h0 + v0 *tt - 0.5* g*tt^2 + rnorm(n,sd=1)\nX = cbind(1,tt,tt^2)\nA = solve(crossprod(X))%*%t(X)\nNs = 100000\ngs = sapply(1:Ns,function(j){y = h0 + v0 *tt - 0.5* g*tt^2 + rnorm(n,sd=1)})\nsd(-2*(A%*%gs)[3,])\n\n\n\nlibrary(UsingR)\nx = father.son$fheight\ny = father.son$sheight\nn = length(y)\nN = 50\nindex = sample(n,N)\nsampledat = father.son[index,]\nx = sampledat$fheight\ny = sampledat$sheight\nbetahat = lm(y~x)$coef\nslopes = sapply(1:10000, function(j){\n  N = 50\n  index = sample(n,N)\n  sampledat = father.son[index,]\n  x = sampledat$fheight\n  y = sampledat$sheight\n  betahat = lm(y~x)$coef\n})\nsd(slopes[2,])\ncov(x,y)\n\n\n\nlibrary(UsingR)\nx = father.son$fheight\ny = father.son$sheight\nn = length(y)\nN = 50\nset.seed(1)\nindex = sample(n,N)\nsampledat = father.son[index,]\nx = sampledat$fheight\ny = sampledat$sheight\nbetahat = lm(y~x)$coef\nfit = lm(y ~ x)\nfit$fitted.values\nSSR =sum(fit$residuals^2)\nsigma2 = SSR/48\nX = cbind(rep(1,N), x)\nsqrt(diag(solve(t(X)%*%X))*sigma2)\n",
+    "created" : 1426404235514.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2741066870",
+    "id" : "4C1B3592",
+    "lastKnownWriteTime" : 1426472952,
+    "path" : "D:/D Disk/Documents/books/MOOC/CS/Harvard Bioinformatics/Part 2/Part 2.R",
+    "project_path" : "Part 2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
